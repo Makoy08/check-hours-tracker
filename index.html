@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Check In / Check Out Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <div class="eyebrow">TIME TRACKER</div>
+      <h1>Check in. Check out.</h1>
+      <p>Record your time and see how many hours you’ve worked or stayed.</p>
+    </header>
+
+    <section class="summary" aria-label="Summary">
+      <article class="summary-card">
+        <span>Total recorded hours</span>
+        <strong id="totalHours">0h 0m</strong>
+      </article>
+      <article class="summary-card">
+        <span>Saved records</span>
+        <strong id="recordCount">0</strong>
+      </article>
+    </section>
+
+    <section class="panel">
+      <h2>Add a record</h2>
+      <form id="timeForm">
+        <div class="fields">
+          <label>
+            Date
+            <input id="workDate" type="date" required>
+          </label>
+          <label>
+            Check in
+            <input id="checkIn" type="time" value="17:30" required>
+          </label>
+          <label>
+            Check out
+            <input id="checkOut" type="time" value="21:00" required>
+          </label>
+        </div>
+        <div class="result" aria-live="polite">
+          <span>Duration</span>
+          <strong id="duration">3h 30m</strong>
+        </div>
+        <p class="hint">If check-out is earlier than check-in, it’s treated as the following day.</p>
+        <button type="submit" class="primary">Save record</button>
+        <p id="formMessage" class="message" role="status"></p>
+      </form>
+    </section>
+
+    <section class="panel records-panel">
+      <div class="records-heading">
+        <div>
+          <h2>Saved records</h2>
+          <p class="subtext">Records are saved in this browser on this device.</p>
+        </div>
+        <button id="exportBtn" class="secondary" type="button">Export CSV</button>
+      </div>
+      <div id="emptyState" class="empty">No records yet. Add your first check-in above.</div>
+      <div class="table-wrap">
+        <table id="recordsTable" hidden>
+          <thead>
+            <tr><th>Date</th><th>Check in</th><th>Check out</th><th>Duration</th><th></th></tr>
+          </thead>
+          <tbody id="recordsBody"></tbody>
+        </table>
+      </div>
+      <button id="clearBtn" class="danger-link" type="button" hidden>Delete all records</button>
+    </section>
+
+    <footer>Simple, private, browser-based time tracking.</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
